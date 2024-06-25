@@ -1,0 +1,35 @@
+- name: Use Redfish to get fan inventory information and memory inventory
+  hosts: Redfish
+  connection: local
+  gather_facts: false
+
+  collections:
+    community.general
+
+  tasks:
+  - name: Get fan inventory with a timeout of 20 seconds
+    community.general.redfish_info:
+      category: Chassis
+      command: GetFanInventory
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      timeout: 20
+    register: fanInv
+
+  - name: Display Fan data
+    debug:
+      var: fanInv
+
+  - name: Get memory inventory
+    community.general.redfish_info:
+      category: Systems
+      command: GetMemoryInventory
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+    register: memInv
+
+  - name: Display memory information
+    debug:
+      var: memInv
