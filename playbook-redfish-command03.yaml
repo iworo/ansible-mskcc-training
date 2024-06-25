@@ -1,0 +1,29 @@
+---
+- name: Verify BIOS attributes
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  # credentials for iDRAC
+  vars:
+    baseuri: 10.0.0.89
+    username: root
+    password: r0gerwilc0
+
+  collections:
+    community.general
+
+  tasks:
+  
+  - name: Verify BIOS
+    community.general.redfish_command:
+      category: Systems
+      command: VerifyBiosAttributes
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+    register: result
+  
+  - name: show results of the verification
+    debug:
+        var: result
