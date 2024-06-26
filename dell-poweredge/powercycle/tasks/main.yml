@@ -1,0 +1,16 @@
+---
+# tasks file for powercycle
+ - name: Power on the PowerEdge
+   redfish_powerstate:
+      baseuri: "{{ idrac_ip }}"
+      username: "{{ idrac_user }}"
+      password:  "{{ idrac_password }}"
+      validate_certs: False
+      # important to place this in quotes - PyYAML 1.1 reads Yes/No/On/Off as BOOLEAN
+      reset_type: "{{ reset_type }}"   # turns on the device 
+   register: results  # create a variable called "results"
+
+ # print to screen
+ - name: Display facts gathered about the powerstate
+   debug:
+     var: results 

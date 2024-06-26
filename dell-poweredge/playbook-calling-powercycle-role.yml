@@ -1,0 +1,15 @@
+- name: Control PowerEdge power state using role # metadata... name doesn't need to be the first entry in the playbook
+  hosts: idrac   # check the inventory for the name "idrac" to learn more (will have connection info)
+  connection: local   # connection local means "talk to the local machine" (usually indicates an SDK is present)
+                      # an SDK would be employed as a "middle man" or "proxy" to manage the connection to/from
+                      # the target
+  gather_facts: no  # this is a kind of "pre step" that would execute before any tasks, it taps into "setup.py"
+                       # where "setup.py" wants to define the variable "ansible_facts". This generally only works
+                       # for the connection types ssh (Linux), winrm (Windows), network_cli (popular network devices)
+
+  # look in this folder for python scripts I might be calling!!
+  collections:
+    - dellemc.openmanage
+
+  roles:
+    - powercycle

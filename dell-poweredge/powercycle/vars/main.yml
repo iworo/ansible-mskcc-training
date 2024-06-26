@@ -1,0 +1,5 @@
+---
+# vars file for powercycle
+    idrac_user: root
+    idrac_password: REPLACE_ME_AT_RUN   # example: ansible-playbook -e idrac_password=correctpass
+    reset_type: "On"    # important to place this in quotes - PyYAML 1.1 reads Yes/No/On/Off as BOOLEAN!!!!
