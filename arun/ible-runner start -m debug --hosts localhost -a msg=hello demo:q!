@@ -1,0 +1,16 @@
+demo/
+└── artifacts
+    └── 6f9c9d51-8823-4cf5-9b61-1da86577f20e
+        ├── command
+        ├── fact_cache
+        ├── job_events
+        │   ├── 1-0d56e145-f263-4398-8fbf-e635d34ee4b1.json
+        │   ├── 2-bc22d7e9-4d36-4229-909c-e0fb48cd7516.json
+        │   ├── 3-05e2d31a-ae32-4ae6-b915-337f3568f3e6.json
+        │   └── 4-0d0da0f0-888c-4d75-906a-1df71b0aa1db.json
+        ├── rc
+        ├── status
+        ├── stderr
+        └── stdout
+
+4 directories, 9 files
